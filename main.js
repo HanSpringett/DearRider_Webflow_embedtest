@@ -3,10 +3,10 @@ import { OrbitControls } from 'https://cdn.skypack.dev/three@0.134.0/examples/js
 // import { FBXLoader } from 'https://cdn.jsdelivr.net/gh/mrdoob/three.js/examples/jsm/loaders/FBXLoader.js';
 
 const sceneAssets = [
-    'assets/Building.gltf',
-    'assets/Cubes.gltf',
-    'assets/DearRider_1977_180.gltf',
-    'assets/DearRider_1983.gltf',
+    'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Building.gltf',
+    'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Cubes.gltf',
+    'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1977_180.gltf',
+    'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1983.gltf',
     'assets/DearRider_1986.gltf',
     'assets/DearRider_1989.gltf',
     'assets/DearRider_1996_Dolphin.gltf',
