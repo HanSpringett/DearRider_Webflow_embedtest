@@ -291,17 +291,7 @@ const threeScene = {
         timelineObj[11].obj = loadedItems[12]
         this.addLight(-900, 500, 525, loadedItems[12])
 
-        document.addEventListener("wheel", (evt) => {
-            if (evt.deltaY > 0 && this.scroll) {
-                this.fowards()
-
-            }
-            else if (evt.deltaY < 0 && this.scroll) {
-                this.backwards()
-            }
-        })
-
-
+    
         this.camera.position.set(-852, 300, -1158)
         this.camera.rotation.set(3.75, -0.5, 3.5)
 
