@@ -290,6 +290,16 @@ const threeScene = {
         loadedItems[12].children[0].children[2].material.side = THREE.FrontSide
         timelineObj[11].obj = loadedItems[12]
         this.addLight(-900, 500, 525, loadedItems[12])
+        
+        window.addEventListener("wheel", (evt) => {
+            if (evt.deltaY > 0 && this.scroll) {
+                this.fowards()
+
+            }
+            else if (evt.deltaY < 0 && this.scroll) {
+                this.backwards()
+            }
+        })
 
     
         this.camera.position.set(-852, 300, -1158)
