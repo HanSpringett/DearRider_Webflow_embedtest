@@ -202,14 +202,13 @@ const threeScene = {
             );
         }
         this.scene.background = new THREE.CubeTextureLoader()
-            .setPath('assets/cube/')
             .load([
-                'right.jpg',
-                'left.jpg',
-                'top.jpg',
-                'bottom.jpg',
-                'front.jpg',
-                'back.jpg'
+                'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/cube/right.jpg',
+                'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/cube/left.jpg',
+                'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/cube/top.jpg',
+                'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/cube/bottom.jpg',
+                'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/cube/front.jpg',
+                'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/cube/back.jpg'
             ]);
     },
     setUpScene() {
