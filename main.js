@@ -390,7 +390,7 @@ export default class threeScene {
         // this.cameraMovementEvents()
 
         //start animation function
-        this.startAnim()
+        // this.startAnim()
 
 
         this.circle = this.addRing()
