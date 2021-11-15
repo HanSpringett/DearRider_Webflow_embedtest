@@ -276,9 +276,9 @@ export default class threeScene {
         //1996_dolphin board
         self.loadedItems[6].position.set(310, 70, 300)
         self.loadedItems[6].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
-        self.loadedItems[6].children[0].children[0].children[0].material.side = THREE.FrontSide
-        self.loadedItems[6].children[0].children[0].children[1].material.side = THREE.FrontSide
-        self.loadedItems[6].children[0].children[0].children[2].material.side = THREE.FrontSide
+        self.loadedItems[6].children[0].children[0].material.side = THREE.FrontSide
+        self.loadedItems[6].children[0].children[1].material.side = THREE.FrontSide
+        self.loadedItems[6].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[5].obj = self.loadedItems[8]
         this.addLight(310, 500, 125, self.loadedItems[6])
         //1996 board
@@ -293,9 +293,9 @@ export default class threeScene {
         self.loadedItems[8].position.set(-590, 70, 300)
         // self.loadedItems[8].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3)
         self.loadedItems[8].scale.set(1, 1, -1)
-        self.loadedItems[8].children[0].children[0].children[0].material.side = THREE.FrontSide
-        self.loadedItems[8].children[0].children[0].children[1].material.side = THREE.FrontSide
-        self.loadedItems[8].children[0].children[0].children[2].material.side = THREE.FrontSide
+        self.loadedItems[8].children[0].children[0].material.side = THREE.FrontSide
+        self.loadedItems[8].children[0].children[1].material.side = THREE.FrontSide
+        self.loadedItems[8].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[7].obj = self.loadedItems[6]
         this.addLight(-590, 500, 125, self.loadedItems[8])
         //2002 board
@@ -304,8 +304,6 @@ export default class threeScene {
         self.loadedItems[9].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[9].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[9].children[0].children[2].material.side = THREE.FrontSide
-        self.loadedItems[9].children[0].children[3].material.side = THREE.FrontSide
-        self.loadedItems[9].children[0].children[4].material.side = THREE.FrontSide
         self.timelineObj[8].obj = self.loadedItems[9]
         this.addLight(510, 500, 525, self.loadedItems[9])
         //2013 board
@@ -409,7 +407,7 @@ export default class threeScene {
         // this.cameraMovementEvents()
 
         //start animation function
-        // this.startAnim()
+        this.startAnim()
 
 
         this.circle = this.addRing()
