@@ -1,5 +1,3 @@
-import { GLTFLoader } from 'https://cdn.jsdelivr.net/gh/mrdoob/three.js/examples/jsm/loaders/GLTFLoader.js';
-
 export default class threeScene {
     sceneAssets = [
         'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Building.gltf',
@@ -117,7 +115,7 @@ export default class threeScene {
 
     constructor() {
     }
-    init(container) {
+    init(container, GLTFLoader) {
         this.scene = new THREE.Scene();
         this.container = container
         this.width = window.innerWidth;
@@ -171,6 +169,7 @@ export default class threeScene {
         this.scroll = false
 
         this.movementTimeline = gsap.timeline()
+        this.gltfLoader = GLTFLoader
     }
     loadModels() {
         this.manager = new THREE.LoadingManager();
@@ -189,7 +188,7 @@ export default class threeScene {
         };
 
         //Loading of assets
-        const loader = new GLTFLoader(this.manager);
+        const loader = new this.gltfLoader(this.manager);
         const self = this
         // Load a glTF resource
         for (let i = 0; i < self.sceneAssets.length; i++) {
@@ -210,14 +209,6 @@ export default class threeScene {
         const plane = new THREE.Mesh(geometry, material);
         plane.position.set(1000, -1000, 3000)
         this.bg = plane
-
-        // const geometry = new THREE.SphereGeometry(75, 16, 8, 0, 2, 1, 1.2);
-        // const material = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, map: textureLoader.load("assets/cube/mountains-covered-with-snow-2-Ab.jpg") });
-
-        // const mesh = new THREE.Mesh(geometry, material);
-        // mesh.scale.set(2000, 2000, 2000)
-        // mesh.rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.75)
-        // this.bg = mesh.position.set(0, -30000, -85000)
 
         const plane2 = new THREE.Mesh(geometry, material);
         plane2.position.set(10000, -1000, -4000)
