@@ -1,118 +1,4 @@
 export default class threeScene {
-    sceneAssets = [
-        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Building.gltf',
-        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Cubes.gltf',
-        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1977_180.gltf',
-        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1983.gltf',
-        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1986.gltf',
-        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1989.gltf',
-        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1996_Dolphin.gltf',
-        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1996_Custom.gltf',
-        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1993.gltf',
-        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2002.gltf',
-        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2013.gltf',
-        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2020.gltf',
-        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2021.gltf',
-        'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRiderOutro1.gltf',
-        'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRiderOutro2.gltf'
-    ];
-
-    loadedItems = {};
-    mouse = new THREE.Vector2();
-
-    timelineObj = [
-        {
-            id: 0,
-            position: { x: -201.961180449289, y: 200, z: -900 },
-            rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
-            obj: false,
-        },
-        {
-            id: 1,
-            position: { x: 500, y: 150, z: -350 },
-            rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
-            obj: false,
-        },
-        {
-            id: 2,
-            position: { x: 100, y: 150, z: -350 },
-            rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
-            obj: false,
-        },
-        {
-            id: 3,
-            position: { x: -400, y: 150, z: -350 },
-            rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
-            obj: false,
-        },
-        {
-            id: 4,
-            position: { x: -900, y: 150, z: -350 },
-            rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
-            obj: false,
-        },
-        {
-            id: 5,
-            position: { x: -600, y: 150, z: 85 },
-            rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
-            obj: false,
-        },
-        {
-            id: 6,
-            position: { x: -200, y: 150, z: 85 },
-            rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
-            obj: false,
-        },
-        {
-            id: 7,
-            position: { x: 300, y: 150, z: 85 },
-            rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
-            obj: false,
-        },
-        {
-            id: 8,
-            position: { x: 500, y: 150, z: 500 },
-            rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
-            obj: false,
-        },
-        {
-            id: 9,
-            position: { x: 100, y: 150, z: 500 },
-            rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
-            obj: false,
-        },
-        {
-            id: 10,
-            position: { x: -400, y: 150, z: 500 },
-            rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
-            obj: false,
-        },
-        {
-            id: 11,
-            position: { x: -900, y: 150, z: 500 },
-            rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
-            obj: false,
-        },
-        {
-            id: 12,
-            position: { x: -500, y: 150, z: 952 },
-            rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
-            obj: false,
-        },
-        {
-            id: 13,
-            position: { x: 0, y: 150, z: 1400 },
-            rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
-            obj: false,
-        }
-    ]
-
-    currentCameraCoords = {
-        x: 0,
-        y: 0,
-        z: 0
-    }
-
     constructor() {
     }
     init(container, GLTFLoader) {
@@ -162,6 +48,119 @@ export default class threeScene {
         this.index = 0
         this.spinAnim
         this.rotateCoords = { x: 0, y: 0, z: 0 }
+        this.sceneAssets = [
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Building.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Cubes.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1977_180.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1983.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1986.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1989.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1996_Dolphin.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1996_Custom.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1993.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2002.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2013.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2020.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2021.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRiderOutro1.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRiderOutro2.gltf'
+        ];
+    
+        this.loadedItems = {};
+        this.mouse = new THREE.Vector2();
+    
+        this.timelineObj = [
+            {
+                id: 0,
+                position: { x: -201.961180449289, y: 200, z: -900 },
+                rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
+                obj: false,
+            },
+            {
+                id: 1,
+                position: { x: 500, y: 150, z: -350 },
+                rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
+                obj: false,
+            },
+            {
+                id: 2,
+                position: { x: 100, y: 150, z: -350 },
+                rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
+                obj: false,
+            },
+            {
+                id: 3,
+                position: { x: -400, y: 150, z: -350 },
+                rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
+                obj: false,
+            },
+            {
+                id: 4,
+                position: { x: -900, y: 150, z: -350 },
+                rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
+                obj: false,
+            },
+            {
+                id: 5,
+                position: { x: -600, y: 150, z: 85 },
+                rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
+                obj: false,
+            },
+            {
+                id: 6,
+                position: { x: -200, y: 150, z: 85 },
+                rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
+                obj: false,
+            },
+            {
+                id: 7,
+                position: { x: 300, y: 150, z: 85 },
+                rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
+                obj: false,
+            },
+            {
+                id: 8,
+                position: { x: 500, y: 150, z: 500 },
+                rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
+                obj: false,
+            },
+            {
+                id: 9,
+                position: { x: 100, y: 150, z: 500 },
+                rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
+                obj: false,
+            },
+            {
+                id: 10,
+                position: { x: -400, y: 150, z: 500 },
+                rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
+                obj: false,
+            },
+            {
+                id: 11,
+                position: { x: -900, y: 150, z: 500 },
+                rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
+                obj: false,
+            },
+            {
+                id: 12,
+                position: { x: -500, y: 150, z: 952 },
+                rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
+                obj: false,
+            },
+            {
+                id: 13,
+                position: { x: 0, y: 150, z: 1400 },
+                rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
+                obj: false,
+            }
+        ]
+    
+        this.currentCameraCoords = {
+            x: 0,
+            y: 0,
+            z: 0
+        }
 
         const light = new THREE.AmbientLight(0x404040, 1); // soft white light
         this.scene.add(light);
