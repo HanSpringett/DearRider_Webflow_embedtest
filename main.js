@@ -1,20 +1,22 @@
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/gh/mrdoob/three.js/examples/jsm/loaders/GLTFLoader.js';
+
 export default class threeScene {
     sceneAssets = [
-        'assets/Building.gltf',
-        'assets/Cubes.gltf',
-        'assets/1979.gltf',
-        'assets/1983.gltf',
-        'assets/1986.gltf',
-        'assets/1989.gltf',
-        'assets/1996_dolphin.gltf',
-        'assets/1996.gltf',
-        'assets/1993.gltf',
-        'assets/2002.gltf',
-        'assets/2013.gltf',
-        'assets/2020.gltf',
-        'assets/2021.gltf',
-        'assets/DearRiderOutro1.gltf',
-        'assets/DearRiderOutro2.gltf'
+        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Building.gltf',
+        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Cubes.gltf',
+        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1977_180.gltf',
+        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1983.gltf',
+        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1986.gltf',
+        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1989.gltf',
+        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1996_Dolphin.gltf',
+        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1996_Custom.gltf',
+        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1993.gltf',
+        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2002.gltf',
+        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2013.gltf',
+        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2020.gltf',
+        'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2021.gltf',
+        'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRiderOutro1.gltf',
+        'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRiderOutro2.gltf'
     ];
 
     loadedItems = {};
@@ -114,10 +116,6 @@ export default class threeScene {
     }
 
     constructor() {
-        this.init(document.getElementById("threeDiv"))
-        this.loadModels()
-        this.animate()
-
     }
     init(container) {
         this.scene = new THREE.Scene();
@@ -143,8 +141,6 @@ export default class threeScene {
 
         this.camera.forwardRotationScalar = 0
         this.camera.sideRotationScalar = 0
-
-        // this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
         this.camera.position.set(0, 20, 100);
         //resize
@@ -210,7 +206,7 @@ export default class threeScene {
         const textureLoader = new THREE.TextureLoader()
         // this.scene.background = textureLoader.load("assets/cube/mountains-covered-with-snow-2-Ab.jpg")
         const geometry = new THREE.PlaneGeometry(15000, 8000);
-        const material = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, map: textureLoader.load("assets/cube/mountains-covered-with-snow-2-Ab.jpg") });
+        const material = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, map: textureLoader.load("https://github.com/HanSpringett/DearRider/blob/main/assets/cube/mountains-covered-with-snow-2-Ab.jpg?raw=true") });
         const plane = new THREE.Mesh(geometry, material);
         plane.position.set(1000, -1000, 3000)
         this.bg = plane
@@ -273,9 +269,9 @@ export default class threeScene {
         //1996_dolphin board
         self.loadedItems[6].position.set(310, 70, 300)
         self.loadedItems[6].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
-        self.loadedItems[6].children[0].children[0].children[0].material.side = THREE.FrontSide
-        self.loadedItems[6].children[0].children[0].children[1].material.side = THREE.FrontSide
-        self.loadedItems[6].children[0].children[0].children[2].material.side = THREE.FrontSide
+        self.loadedItems[6].children[0].children[0].material.side = THREE.FrontSide
+        self.loadedItems[6].children[0].children[1].material.side = THREE.FrontSide
+        self.loadedItems[6].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[5].obj = self.loadedItems[8]
         this.addLight(310, 500, 125, self.loadedItems[6])
         //1996 board
@@ -290,9 +286,9 @@ export default class threeScene {
         self.loadedItems[8].position.set(-590, 70, 300)
         // self.loadedItems[8].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3)
         self.loadedItems[8].scale.set(1, 1, -1)
-        self.loadedItems[8].children[0].children[0].children[0].material.side = THREE.FrontSide
-        self.loadedItems[8].children[0].children[0].children[1].material.side = THREE.FrontSide
-        self.loadedItems[8].children[0].children[0].children[2].material.side = THREE.FrontSide
+        self.loadedItems[8].children[0].children[0].material.side = THREE.FrontSide
+        self.loadedItems[8].children[0].children[1].material.side = THREE.FrontSide
+        self.loadedItems[8].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[7].obj = self.loadedItems[6]
         this.addLight(-590, 500, 125, self.loadedItems[8])
         //2002 board
@@ -301,8 +297,6 @@ export default class threeScene {
         self.loadedItems[9].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[9].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[9].children[0].children[2].material.side = THREE.FrontSide
-        self.loadedItems[9].children[0].children[3].material.side = THREE.FrontSide
-        self.loadedItems[9].children[0].children[4].material.side = THREE.FrontSide
         self.timelineObj[8].obj = self.loadedItems[9]
         this.addLight(510, 500, 525, self.loadedItems[9])
         //2013 board
@@ -406,7 +400,7 @@ export default class threeScene {
         // this.cameraMovementEvents()
 
         //start animation function
-        // this.startAnim()
+        this.startAnim()
 
 
         this.circle = this.addRing()
