@@ -213,7 +213,7 @@ export default class threeScene {
         const textureLoader = new THREE.TextureLoader()
         // this.scene.background = textureLoader.load("assets/cube/mountains-covered-with-snow-2-Ab.jpg")
         const geometry = new THREE.PlaneGeometry(15000, 8000);
-        const material = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, map: textureLoader.load("https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/cube/mountains-covered-with-snow-2-Ab.jpg") });
+        const material = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, map: textureLoader.load("https://github.com/HanSpringett/DearRider/blob/main/assets/cube/mountains-covered-with-snow-2-Ab.jpg?raw=true") });
         const plane = new THREE.Mesh(geometry, material);
         plane.position.set(1000, -1000, 3000)
         this.bg = plane
@@ -807,5 +807,8 @@ export default class threeScene {
     }
 }
 
+export function test(){
+    console.log("TEST")
+}
 
 const scene = new threeScene()
