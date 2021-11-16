@@ -1,7 +1,7 @@
 export default class threeScene {
     constructor() {
     }
-    init(container, GLTFLoader, ambientLightIntensity, spotLightIntensity) {
+    init(container, GLTFLoader) {
         this.scene = new THREE.Scene();
         this.container = container
         this.width = window.innerWidth;
@@ -55,15 +55,15 @@ export default class threeScene {
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1983.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1986.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1989.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/1993.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/1996.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1996_dolphin.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1996.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1993.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/2002.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/2013.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/2020.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/2021.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRiderOutro1.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRiderOutro2.gltf'
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRiderOutro1.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRiderOutro2.gltf'
         ];
     
         this.loadedItems = {};
@@ -162,14 +162,13 @@ export default class threeScene {
             z: 0
         }
 
-        const light = new THREE.AmbientLight(0x404040, ambientLightIntensity); // soft white light
+        const light = new THREE.AmbientLight(0x404040, 1); // soft white light
         this.scene.add(light);
 
         this.scroll = false
 
         this.movementTimeline = gsap.timeline()
         this.gltfLoader = GLTFLoader
-        this.spotLightIntensity = spotLightIntensity
     }
     loadModels() {
         this.manager = new THREE.LoadingManager();
@@ -205,7 +204,7 @@ export default class threeScene {
         const textureLoader = new THREE.TextureLoader()
         // this.scene.background = textureLoader.load("assets/cube/mountains-covered-with-snow-2-Ab.jpg")
         const geometry = new THREE.PlaneGeometry(15000, 8000);
-        const material = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, map: textureLoader.load("https://github.com/HanSpringett/DearRider/blob/main/assets/cube/mountains-covered-with-snow-2-Ab.jpg?raw=true") });
+        const material = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, map: textureLoader.load("https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/cube/mountains-covered-with-snow-2-Ab.jpg") });
         const plane = new THREE.Mesh(geometry, material);
         plane.position.set(1000, -1000, 3000)
         this.bg = plane
@@ -260,9 +259,9 @@ export default class threeScene {
         //1996_dolphin board
         self.loadedItems[6].position.set(310, 70, 300)
         self.loadedItems[6].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
-        self.loadedItems[6].children[0].children[0].material.side = THREE.FrontSide
-        self.loadedItems[6].children[0].children[1].material.side = THREE.FrontSide
-        self.loadedItems[6].children[0].children[2].material.side = THREE.FrontSide
+        self.loadedItems[6].children[0].children[0].children[0].material.side = THREE.FrontSide
+        self.loadedItems[6].children[0].children[0].children[1].material.side = THREE.FrontSide
+        self.loadedItems[6].children[0].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[5].obj = self.loadedItems[8]
         this.addLight(310, 500, 125, self.loadedItems[6])
         //1996 board
@@ -277,9 +276,9 @@ export default class threeScene {
         self.loadedItems[8].position.set(-590, 70, 300)
         // self.loadedItems[8].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3)
         self.loadedItems[8].scale.set(1, 1, -1)
-        self.loadedItems[8].children[0].children[0].material.side = THREE.FrontSide
-        self.loadedItems[8].children[0].children[1].material.side = THREE.FrontSide
-        self.loadedItems[8].children[0].children[2].material.side = THREE.FrontSide
+        self.loadedItems[8].children[0].children[0].children[0].material.side = THREE.FrontSide
+        self.loadedItems[8].children[0].children[0].children[1].material.side = THREE.FrontSide
+        self.loadedItems[8].children[0].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[7].obj = self.loadedItems[6]
         this.addLight(-590, 500, 125, self.loadedItems[8])
         //2002 board
@@ -393,6 +392,7 @@ export default class threeScene {
         //start animation function
         // this.startAnim()
 
+
         this.circle = this.addRing()
         this.circle.scale.set(3, 3, 3)
         this.circle.visible = false
@@ -442,7 +442,7 @@ export default class threeScene {
     }
     //adds a spotlight at the specific coords and looks at the target
     addLight(x, y, z, target) {
-        const spotLight = new THREE.SpotLight(0xffffff, this.spotLightIntensity);
+        const spotLight = new THREE.SpotLight(0xffffff, 2);
         spotLight.position.set(x, y, z);
         spotLight.target = target;
         spotLight.penumbra = 1
