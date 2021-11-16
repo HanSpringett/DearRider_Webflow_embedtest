@@ -1,7 +1,7 @@
 export default class threeScene {
     constructor() {
     }
-    init(container, GLTFLoader) {
+    init(container, GLTFLoader, ambientLightIntensity, spotlightIntensity) {
         this.scene = new THREE.Scene();
         this.container = container
         this.width = window.innerWidth;
@@ -65,10 +65,10 @@ export default class threeScene {
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRiderOutro1.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRiderOutro2.gltf'
         ];
-    
+
         this.loadedItems = {};
         this.mouse = new THREE.Vector2();
-    
+
         this.timelineObj = [
             {
                 id: 0,
@@ -150,23 +150,23 @@ export default class threeScene {
             },
             {
                 id: 13,
-                position: { x: 0, y: 150, z: 1400 },
+                position: { x: 100, y: 150, z: 1400 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             }
         ]
-    
+
         this.currentCameraCoords = {
             x: 0,
             y: 0,
             z: 0
         }
 
-        const light = new THREE.AmbientLight(0x404040, 1); // soft white light
+        const light = new THREE.AmbientLight(0x404040, ambientLightIntensity); // soft white light
         this.scene.add(light);
 
         this.scroll = false
-
+        this.spotlightIntensity = spotlightIntensity
         this.movementTimeline = gsap.timeline()
         this.gltfLoader = GLTFLoader
     }
@@ -315,11 +315,13 @@ export default class threeScene {
         this.addLight(-890, 500, 525, self.loadedItems[12])
 
         //placeholder1
-        self.loadedItems[13].position.set(-500, 150, 1050)
+        self.loadedItems[13].position.set(-500, 175, 1050)
+        self.loadedItems[13].rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.04)
         this.placeholder1 = self.loadedItems[13]
         this.placeholder1.visible = false
         //placeholder2
-        self.loadedItems[14].position.set(0, 150, 1500)
+        self.loadedItems[14].position.set(100, 175, 1500)
+        self.loadedItems[14].rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.04)
         this.placeholder2 = self.loadedItems[14]
         this.placeholder2.visible = false
 
@@ -363,6 +365,7 @@ export default class threeScene {
             // calculate objects intersecting the picking ray
             const intersects = this.raycaster.intersectObjects(this.scene.children);
             if (intersects[0].object.name == "explore") {
+
                 window.dispatchEvent(new CustomEvent("openExplore", { detail: this.index }))
                 console.log("Index", this.index)
             }
@@ -402,6 +405,7 @@ export default class threeScene {
         let initX
         let initY
         window.addEventListener("pointermove", (evt) => {
+            this.onMouseMove(evt)
             gsap.delayedCall(0.5, () => {
                 initX = evt.x
                 initY = evt.y
@@ -442,7 +446,7 @@ export default class threeScene {
     }
     //adds a spotlight at the specific coords and looks at the target
     addLight(x, y, z, target) {
-        const spotLight = new THREE.SpotLight(0xffffff, 2);
+        const spotLight = new THREE.SpotLight(0xffffff, this.spotlightIntensity);
         spotLight.position.set(x, y, z);
         spotLight.target = target;
         spotLight.penumbra = 1
@@ -492,20 +496,21 @@ export default class threeScene {
         this.currentCameraCoords.x = self.timelineObj[index].position.x
         this.currentCameraCoords.y = self.timelineObj[index].position.y
         this.currentCameraCoords.z = self.timelineObj[index].position.z
+
         if (index > 0) {
-            gsap.to(this.bg, { z: 3550, duration: 2 })
+            gsap.to(this.bg.position, { z: 3550, duration: 2 })
         }
         if (index > 4) {
-            gsap.to(this.bg, { z: 3185, duration: 2 })
+            gsap.to(this.bg.position, { z: 3185, duration: 2 })
         }
         if (index > 7) {
-            gsap.to(this.bg, { z: 3600, duration: 2 })
+            gsap.to(this.bg.position, { z: 3600, duration: 2 })
         }
         if (index > 11) {
-            gsap.to(this.bg, { z: 4052, duration: 2 })
+            gsap.to(this.bg.position, { z: 4052, duration: 2 })
         }
         if (index > 12) {
-            gsap.to(this.bg, { z: 4500, duration: 2 })
+            gsap.to(this.bg.position, { z: 4500, duration: 2 })
         }
     }
     startSpinBoard(index) {
@@ -572,10 +577,30 @@ export default class threeScene {
     }
     animate() {
         const animate = () => {
-            // if (this.index == 0) {
-            //     this.rotateVertical()
-            //     this.rotate()
-            // }
+            if (this.circle) {
+                this.raycaster.setFromCamera(this.mouse, this.camera);
+                const intersects = this.raycaster.intersectObjects(this.scene.children);
+                if (intersects[0].object.name == "explore") {
+                    gsap.to([this.circle.children[2].material], { opacity: 1, duration: 1 })
+                    gsap.to([this.circle.children[3].material], { opacity: 0.3, duration: 1 })
+                    gsap.to(this.circle.children[3].scale, {
+                        x: 1.15,
+                        y: 1.15,
+                        z: 1.15,
+                        duration: 2
+                    })
+                }
+                else {
+                    gsap.to([this.circle.children[2].material, this.circle.children[3].material], { opacity: 0, duration: 1 })
+                    gsap.to(this.circle.children[3].scale, {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 2
+                    })
+                }
+            }
+
             this.renderer.render(this.scene, this.camera);
             this.animFrame = requestAnimationFrame(animate);
         }
@@ -660,8 +685,14 @@ export default class threeScene {
     addRing() {
         const circleGroup = new THREE.Group()
 
-        const ring2Geom = new THREE.RingGeometry(9.9, 10, 80);
-        const ring2Mat = new THREE.MeshBasicMaterial({ color: 0xe0e0e0, side: THREE.DoubleSide });
+        const ring1Geom = new THREE.RingGeometry(9.9, 10, 80);
+        const ring1Mat = new THREE.MeshBasicMaterial({ color: 0xe0e0e0, side: THREE.DoubleSide, transparent: true });
+        const mesh1 = new THREE.Mesh(ring1Geom, ring1Mat);
+        mesh1.position.set(0, 20, 100)
+        circleGroup.add(mesh1);
+
+        const ring2Geom = new THREE.RingGeometry(11.9, 12, 80);
+        const ring2Mat = new THREE.MeshBasicMaterial({ color: 0xe0e0e0, side: THREE.DoubleSide, transparent: true });
         const mesh2 = new THREE.Mesh(ring2Geom, ring2Mat);
         mesh2.position.set(0, 20, 100)
         circleGroup.add(mesh2);
@@ -669,9 +700,15 @@ export default class threeScene {
         const circleGeometry = new THREE.CircleGeometry(10, 32);
         const circleMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0, side: THREE.DoubleSide });
         const circle = new THREE.Mesh(circleGeometry, circleMat);
-        circle.position.set(0, 20, 95)
+        circle.position.set(0, 20, 100.1)
         circle.name = "explore"
         circleGroup.add(circle);
+
+        const circleGeometry2 = new THREE.CircleGeometry(12, 32);
+        const circleMat2 = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0, side: THREE.DoubleSide });
+        const circle2 = new THREE.Mesh(circleGeometry2, circleMat2);
+        circle2.position.set(0, 20, 100.2)
+        circleGroup.add(circle2);
 
         const text = this.loadText("Explore", 125)
         text.position.set(0, 20, 100)
@@ -686,8 +723,7 @@ export default class threeScene {
         const context = canvas.getContext('2d');
 
         // 2d duty
-        context.font = fontSize + "px Arial";
-
+        context.font = fontSize + "px HelveticaNowText";
 
         let metrics = context.measureText(text);
 
@@ -697,10 +733,10 @@ export default class threeScene {
         canvas.width = textWidth;
         canvas.height = textHeight;
 
-        context.font = "bold " + fontSize + "px Arial";
+        context.font = "bold " + fontSize + "px HelveticaNowText";
         context.textAlign = "center";
         context.textBaseline = "middle";
-        context.fillStyle = "#e0e0e0";
+        context.fillStyle = "#ffffff";
         context.fillText(text, textWidth / 2, textHeight / 2);
 
         const texture = new THREE.Texture(canvas);
@@ -753,6 +789,10 @@ export default class threeScene {
                 }
                 this.index = target.id
 
+                this.currentCameraCoords.x = self.timelineObj[this.index].position.x
+                this.currentCameraCoords.y = self.timelineObj[this.index].position.y
+                this.currentCameraCoords.z = self.timelineObj[this.index].position.z
+
             }
         })
         if (target.id > this.currentTimelinePos) {
@@ -762,7 +802,22 @@ export default class threeScene {
                     y: self.timelineObj[i].position.y,
                     z: self.timelineObj[i].position.z,
                     duration: 1,
-                })
+                }, i.toString())
+                if (i == 1) {
+                    this.movementTimeline.to(this.bg.position, { z: 3550, duration: 1 }, i.toString())
+                }
+                if (i == 5) {
+                    this.movementTimeline.to(this.bg.position, { z: 3185, duration: 1 }, i.toString())
+                }
+                if (i == 8) {
+                    this.movementTimeline.to(this.bg.position, { z: 3600, duration: 1 }, i.toString())
+                }
+                if (i == 12) {
+                    this.movementTimeline.to(this.bg.position, { z: 4052, duration: 1 }, i.toString())
+                }
+                if (i == 13) {
+                    this.movementTimeline.to(this.bg.position, { z: 4500, duration: 1 }, i.toString())
+                }
             }
             this.movementTimeline.play()
             this.currentTimelinePos = target.id
@@ -774,18 +829,47 @@ export default class threeScene {
                     y: self.timelineObj[i].position.y,
                     z: self.timelineObj[i].position.z,
                     duration: 1,
-                })
+                }, i.toString())
+                if (i == 1) {
+                    this.movementTimeline.to(this.bg.position, { z: 3550, duration: 1 }, i.toString())
+                }
+                if (i == 5) {
+                    this.movementTimeline.to(this.bg.position, { z: 3185, duration: 1 }, i.toString())
+                }
+                if (i == 8) {
+                    this.movementTimeline.to(this.bg.position, { z: 3600, duration: 1 }, i.toString())
+                }
+                if (i == 12) {
+                    this.movementTimeline.to(this.bg.position, { z: 4052, duration: 1 }, i.toString())
+                }
+                if (i == 13) {
+                    this.movementTimeline.to(this.bg.position, { z: 4500, duration: 1 }, i.toString())
+                }
             }
             this.movementTimeline.play()
             this.currentTimelinePos = target.id
         }
     }
-
     roundUp(numToRound, multiple) {
         let value = multiple;
         while (value < numToRound) {
             value = value * multiple;
         }
         return value;
+    }
+    hideExploreButton() {
+        gsap.to([this.circle.children[0].material, this.circle.children[1].material, this.circle.children[2].material], { opacity: 0, duration: 1 })
+    }
+    showExploreButton() {
+        gsap.to([this.circle.children[0].material, this.circle.children[1].material, this.circle.children[2].material], { opacity: 1, duration: 1 })
+    }
+    onMouseMove(event) {
+
+        // calculate mouse position in normalized device coordinates
+        // (-1 to +1) for both components
+
+        this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
     }
 }
