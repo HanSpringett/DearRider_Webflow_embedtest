@@ -49,19 +49,19 @@ export default class threeScene {
         this.spinAnim
         this.rotateCoords = { x: 0, y: 0, z: 0 }
         this.sceneAssets = [
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Building.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Cubes.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1977_180.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1983.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1986.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1989.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1996_Dolphin.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1996_Custom.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1993.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2002.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2013.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2020.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2021.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/Building.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/Cubes.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRider_1977_180.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRider_1983.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRider_1986.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRider_1989.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRider_1996_Dolphin.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRider_1996_Custom.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRider_1993.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRider_2002.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRider_2013.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRider_2020.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRider_2021.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRiderOutro1.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/DearRiderOutro2.gltf'
         ];
