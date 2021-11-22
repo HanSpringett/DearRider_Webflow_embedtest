@@ -1,7 +1,7 @@
 export default class threeScene {
     constructor() {
     }
-    init(container, GLTFLoader, ambientLightIntensity, spotlightIntensity) {
+    init(container, GLTFLoader, RGBELoader) {
         this.scene = new THREE.Scene();
         this.container = container
         this.width = window.innerWidth;
@@ -9,8 +9,8 @@ export default class threeScene {
         this.camera = new THREE.PerspectiveCamera(
             75,
             this.width / this.height,
-            0.1,
-            1000000
+            1,
+            10000
         );
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -21,6 +21,7 @@ export default class threeScene {
         this.renderer.outputEncoding = THREE.sRGBEncoding;
         this.renderer.shadowMap.enabled = true;
         this.renderer.shadowMapSoft = true;
+
         container.appendChild(this.renderer.domElement);
 
         this.camera.forwardRotationScalar = 0
@@ -45,18 +46,20 @@ export default class threeScene {
 
         this.raycaster = new THREE.Raycaster();
 
+        // this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+
         this.index = 0
         this.spinAnim
         this.rotateCoords = { x: 0, y: 0, z: 0 }
         this.sceneAssets = [
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Building.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/building_shadows_v7.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Cubes.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1979.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1977.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1983.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1986.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1989.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1993.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1996.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/1993.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/1996.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1996_dolphin.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/2002.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/2013.gltf',
@@ -72,73 +75,73 @@ export default class threeScene {
         this.timelineObj = [
             {
                 id: 0,
-                position: { x: -201.961180449289, y: 200, z: -900 },
+                position: { x: 0, y: 140, z: -1100 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 1,
-                position: { x: 500, y: 150, z: -350 },
+                position: { x: 1150, y: 150, z: -300 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 2,
-                position: { x: 100, y: 150, z: -350 },
+                position: { x: 415, y: 150, z: -300 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 3,
-                position: { x: -400, y: 150, z: -350 },
+                position: { x: -345, y: 150, z: -300 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 4,
-                position: { x: -900, y: 150, z: -350 },
+                position: { x: -1075, y: 150, z: -300 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 5,
-                position: { x: -600, y: 150, z: 85 },
+                position: { x: -735, y: 150, z: 285 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 6,
-                position: { x: -200, y: 150, z: 85 },
+                position: { x: 35, y: 150, z: 285 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 7,
-                position: { x: 300, y: 150, z: 85 },
+                position: { x: 775, y: 150, z: 285 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 8,
-                position: { x: 500, y: 150, z: 500 },
+                position: { x: 500, y: 150, z: 625 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 9,
-                position: { x: 100, y: 150, z: 500 },
+                position: { x: 100, y: 150, z: 625 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 10,
-                position: { x: -400, y: 150, z: 500 },
+                position: { x: -400, y: 150, z: 625 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 11,
-                position: { x: -900, y: 150, z: 500 },
+                position: { x: -900, y: 150, z: 625 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
@@ -162,13 +165,14 @@ export default class threeScene {
             z: 0
         }
 
-        const light = new THREE.AmbientLight(0x404040, ambientLightIntensity); // soft white light
-        this.scene.add(light);
-
         this.scroll = false
-        this.spotlightIntensity = spotlightIntensity
         this.movementTimeline = gsap.timeline()
         this.gltfLoader = GLTFLoader
+        this.RGBELoader = RGBELoader
+        // this.stats = new Stats();
+        // this.stats.showPanel(1); // 0: fps, 1: ms, 2: mb, 3+: custom
+        // document.body.appendChild(this.stats.domElement);
+
     }
     loadModels() {
         this.manager = new THREE.LoadingManager();
@@ -199,10 +203,11 @@ export default class threeScene {
                     this.scene.add(gltf.scene);
                     self.loadedItems[i] = gltf.scene
                     gltf.scene.traverse(child => {
-                        if (child.isMesh) {
-                            child.castShadow = true;
-                            child.receiveShadow = true;
-                        }
+                        // if (child.isMesh) {
+                        //     // child.castShadow = true;
+                        //     // child.receiveShadow = true;
+                        //     child.visible = false
+                        // }
                     })
                 }
             );
@@ -222,113 +227,123 @@ export default class threeScene {
 
         this.scene.add(this.bg);
 
+
+        const pmremGenerator = new THREE.PMREMGenerator(this.renderer);
+        pmremGenerator.compileEquirectangularShader();
+        //Loading of assets
+        new this.RGBELoader().setDataType(THREE.UnsignedByteType)
+            .load('https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/studio_small_09_1k.hdr', (texture) => {
+
+                const envMap = pmremGenerator.fromEquirectangular(texture).texture;
+
+                // this.scene.background = envMap;
+                this.scene.environment = envMap;
+
+                texture.dispose();
+                pmremGenerator.dispose();
+
+                this.renderer.render(this.scene, this.camera);
+            })
     }
     //maps the loaded models to the timeline and places them in the scene at their positions
     setUpScene() {
         const self = this
         //building
         self.loadedItems[0].position.set(0, 0, 0)
+        console.log(self.loadedItems[0])
         //cubes
-        self.loadedItems[1].position.set(-200, 140, -550)
-        self.loadedItems[1].scale.set(2, 2, -2)
-        this.addLight(-200, 500, -2000, self.loadedItems[1])
-        self.loadedItems[1].castShadow = true;
-        self.loadedItems[1].receiveShadow = false;
+        self.loadedItems[1].position.set(0, 140, -825)
+        self.loadedItems[1].scale.set(1, 1, -1)
+        self.loadedItems[1].rotateOnAxis(new THREE.Vector3(0, 1, 0), -10)
+
         //1979 board
-        self.loadedItems[2].position.set(510, 70, -125)
+        self.loadedItems[2].position.set(1150, 70, -125)
         self.loadedItems[2].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
-        self.loadedItems[2].children[0].children[0].material.side = THREE.FrontSide
-        self.loadedItems[2].children[0].children[1].material.side = THREE.FrontSide
-        self.loadedItems[2].children[0].children[2].material.side = THREE.FrontSide
+        self.loadedItems[2].scale.set(2, 2, 2)
+        // self.loadedItems[2].children[0].children[0].material.side = THREE.FrontSide
+        // self.loadedItems[2].children[0].children[1].material.side = THREE.FrontSide
+        // self.loadedItems[2].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[1].obj = self.loadedItems[2]
-        this.addLight(510, 500, -150, self.loadedItems[2])
         //1983 board
-        self.loadedItems[3].position.set(110, 70, -120)
+        self.loadedItems[3].position.set(415, 70, -120)
         self.loadedItems[3].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
         self.timelineObj[2].obj = self.loadedItems[3]
-        this.addLight(110, 500, -145, self.loadedItems[3])
         //1986 board
-        self.loadedItems[4].position.set(-390, 70, -100)
+        self.loadedItems[4].position.set(-345, 70, -100)
         self.loadedItems[4].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
         self.loadedItems[4].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[4].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[4].children[0].children[2].material.side = THREE.FrontSide
         self.loadedItems[4].children[0].children[3].material.side = THREE.FrontSide
         self.timelineObj[3].obj = self.loadedItems[4]
-        this.addLight(-390, 500, -125, self.loadedItems[4])
         //1989 board
-        self.loadedItems[5].position.set(-890, 70, -100)
+        self.loadedItems[5].position.set(-1065, 70, -100)
         self.loadedItems[5].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
         self.loadedItems[5].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[5].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[5].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[4].obj = self.loadedItems[5]
-        this.addLight(-890, 500, -125, self.loadedItems[5])
         //1996_dolphin board
-        self.loadedItems[6].position.set(310, 70, 300)
+        self.loadedItems[6].position.set(785, 70, 450)
         self.loadedItems[6].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
         self.loadedItems[6].children[0].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[6].children[0].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[6].children[0].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[5].obj = self.loadedItems[8]
-        this.addLight(310, 500, 275, self.loadedItems[6])
         //1996 board
-        self.loadedItems[7].position.set(-190, 70, 300)
+        self.loadedItems[7].position.set(45, 70, 450)
         self.loadedItems[7].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
         self.loadedItems[7].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[7].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[7].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[6].obj = self.loadedItems[7]
-        this.addLight(-190, 500, 275, self.loadedItems[7])
         //1993 board
-        self.loadedItems[8].position.set(-590, 70, 300)
+        self.loadedItems[8].position.set(-735, 70, 450)
         // self.loadedItems[8].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3)
         self.loadedItems[8].scale.set(1, 1, -1)
         self.loadedItems[8].children[0].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[8].children[0].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[8].children[0].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[7].obj = self.loadedItems[6]
-        this.addLight(-590, 500, 275, self.loadedItems[8])
         //2002 board
-        self.loadedItems[9].position.set(510, 70, 700)
+        self.loadedItems[9].position.set(510, 70, 800)
         self.loadedItems[9].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
         self.loadedItems[9].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[9].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[9].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[8].obj = self.loadedItems[9]
-        this.addLight(510, 500, 675, self.loadedItems[9])
         //2013 board
-        self.loadedItems[10].position.set(110, 70, 700)
+        self.loadedItems[10].position.set(110, 70, 800)
         self.loadedItems[10].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
         self.loadedItems[10].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[10].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[10].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[9].obj = self.loadedItems[10]
-        this.addLight(110, 500, 675, self.loadedItems[10])
         //2020 board
-        self.loadedItems[11].position.set(-390, 70, 700)
+        self.loadedItems[11].position.set(-390, 70, 800)
         self.loadedItems[11].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
         self.loadedItems[11].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[11].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[11].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[10].obj = self.loadedItems[11]
-        this.addLight(-390, 500, 675, self.loadedItems[11])
         //2021 board
-        self.loadedItems[12].position.set(-890, 70, 700)
+        self.loadedItems[12].position.set(-890, 70, 800)
         self.loadedItems[12].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
         self.loadedItems[12].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[12].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[12].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[11].obj = self.loadedItems[12]
-        this.addLight(-890, 500, 675, self.loadedItems[12])
 
         //placeholder1
         self.loadedItems[13].position.set(-500, 175, 1050)
         self.loadedItems[13].rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.04)
+        self.loadedItems[13].scale.set(-1, 1, 1)
+        console.log(self.loadedItems[13])
         this.placeholder1 = self.loadedItems[13]
         this.placeholder1.visible = false
         //placeholder2
         self.loadedItems[14].position.set(100, 175, 1500)
+        self.loadedItems[14].scale.set(-1, 1, 1)
         self.loadedItems[14].rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.04)
         this.placeholder2 = self.loadedItems[14]
         this.placeholder2.visible = false
@@ -588,6 +603,7 @@ export default class threeScene {
     }
     animate() {
         const animate = () => {
+            // this.stats.begin();
             if (this.circle) {
                 this.raycaster.setFromCamera(this.mouse, this.camera);
                 const intersects = this.raycaster.intersectObjects(this.scene.children);
@@ -613,6 +629,7 @@ export default class threeScene {
             }
 
             this.renderer.render(this.scene, this.camera);
+            // this.stats.end();
             this.animFrame = requestAnimationFrame(animate);
         }
         animate()
@@ -884,16 +901,3 @@ export default class threeScene {
 
     }
 }
-
-
-// import { GLTFLoader } from 'https://cdn.jsdelivr.net/gh/mrdoob/three.js/examples/jsm/loaders/GLTFLoader.js'
-
-
-// let t = new threeScene()
-// t.init(document.getElementById("threeDiv"), GLTFLoader, 4, 2)
-// t.loadModels()
-// t.animate()
-
-// gsap.delayedCall(1, () => {
-//     t.startAnim()
-// })
