@@ -46,20 +46,18 @@ export default class threeScene {
 
         this.raycaster = new THREE.Raycaster();
 
-        // this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-
         this.index = 0
         this.spinAnim
         this.rotateCoords = { x: 0, y: 0, z: 0 }
         this.sceneAssets = [
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/building_shadows_v7.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Cubes.gltf',
+            './assets/building_shadows_v11.gltf',
+            './assets/Cubes_v2.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1977.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1983.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1986.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1989.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1993.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1996.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/1993.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/1996.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/1996_dolphin.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/2002.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/2013.gltf',
@@ -75,85 +73,85 @@ export default class threeScene {
         this.timelineObj = [
             {
                 id: 0,
-                position: { x: 0, y: 140, z: -1100 },
+                position: { x: -0, y: 105, z: -1100 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 1,
-                position: { x: 1150, y: 150, z: -300 },
+                position: { x: 1143.25, y: 150, z: -300 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 2,
-                position: { x: 415, y: 150, z: -300 },
+                position: { x: 408.5, y: 150, z: -300 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 3,
-                position: { x: -345, y: 150, z: -300 },
+                position: { x: -351.5, y: 150, z: -300 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 4,
-                position: { x: -1075, y: 150, z: -300 },
+                position: { x: -1092, y: 150, z: -300 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 5,
-                position: { x: -735, y: 150, z: 285 },
+                position: { x: -732.25, y: 150, z: 320 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 6,
-                position: { x: 35, y: 150, z: 285 },
+                position: { x: 38.5, y: 150, z: 320 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 7,
-                position: { x: 775, y: 150, z: 285 },
+                position: { x: 772, y: 150, z: 320 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 8,
-                position: { x: 500, y: 150, z: 625 },
+                position: { x: 1163, y: 150, z: 825 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 9,
-                position: { x: 100, y: 150, z: 625 },
+                position: { x: 414, y: 150, z: 825 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 10,
-                position: { x: -400, y: 150, z: 625 },
+                position: { x: -336.5, y: 150, z: 825 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 11,
-                position: { x: -900, y: 150, z: 625 },
+                position: { x: -1071.5, y: 150, z: 825 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 12,
-                position: { x: -500, y: 150, z: 952 },
+                position: { x: -500, y: 150, z: 985 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             },
             {
                 id: 13,
-                position: { x: 100, y: 150, z: 1400 },
+                position: { x: 100, y: 250, z: 1935 },
                 rotation: { x: 3.096496824068951, y: -0.03892926785276455, z: 3.1398363604390074 },
                 obj: false,
             }
@@ -169,10 +167,6 @@ export default class threeScene {
         this.movementTimeline = gsap.timeline()
         this.gltfLoader = GLTFLoader
         this.RGBELoader = RGBELoader
-        // this.stats = new Stats();
-        // this.stats.showPanel(1); // 0: fps, 1: ms, 2: mb, 3+: custom
-        // document.body.appendChild(this.stats.domElement);
-
     }
     loadModels() {
         this.manager = new THREE.LoadingManager();
@@ -213,11 +207,11 @@ export default class threeScene {
             );
         }
         const textureLoader = new THREE.TextureLoader()
-        // this.scene.background = textureLoader.load("assets/cube/mountains-covered-with-snow-2-Ab.jpg")
         const geometry = new THREE.PlaneGeometry(15000, 8000);
         const material = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, map: textureLoader.load("https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/cube/mountains-covered-with-snow-2-Ab.jpg") });
         const plane = new THREE.Mesh(geometry, material);
         plane.position.set(1000, -1000, 3000)
+        plane.scale.set(1.25, 1.25, 1.25)
         this.bg = plane
 
         const plane2 = new THREE.Mesh(geometry, material);
@@ -250,103 +244,93 @@ export default class threeScene {
         const self = this
         //building
         self.loadedItems[0].position.set(0, 0, 0)
-        console.log(self.loadedItems[0])
         //cubes
-        self.loadedItems[1].position.set(0, 140, -825)
-        self.loadedItems[1].scale.set(1, 1, -1)
-        self.loadedItems[1].rotateOnAxis(new THREE.Vector3(0, 1, 0), -10)
-
+        self.loadedItems[1].position.set(0, 120, -825)
         //1979 board
-        self.loadedItems[2].position.set(1150, 70, -125)
-        self.loadedItems[2].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
+        self.loadedItems[2].position.set(1150, 70, -130)
+        self.loadedItems[2].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.14159)
         self.loadedItems[2].scale.set(2, 2, 2)
-        // self.loadedItems[2].children[0].children[0].material.side = THREE.FrontSide
-        // self.loadedItems[2].children[0].children[1].material.side = THREE.FrontSide
-        // self.loadedItems[2].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[1].obj = self.loadedItems[2]
         //1983 board
-        self.loadedItems[3].position.set(415, 70, -120)
-        self.loadedItems[3].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
+        self.loadedItems[3].position.set(415, 70, -135)
+        self.loadedItems[3].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.14159)
         self.timelineObj[2].obj = self.loadedItems[3]
         //1986 board
-        self.loadedItems[4].position.set(-345, 70, -100)
-        self.loadedItems[4].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
+        self.loadedItems[4].position.set(-345, 70, -135)
+        self.loadedItems[4].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.14159)
         self.loadedItems[4].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[4].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[4].children[0].children[2].material.side = THREE.FrontSide
         self.loadedItems[4].children[0].children[3].material.side = THREE.FrontSide
         self.timelineObj[3].obj = self.loadedItems[4]
         //1989 board
-        self.loadedItems[5].position.set(-1065, 70, -100)
-        self.loadedItems[5].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
+        self.loadedItems[5].position.set(-1085, 70, -135)
+        self.loadedItems[5].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.14159)
         self.loadedItems[5].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[5].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[5].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[4].obj = self.loadedItems[5]
         //1996_dolphin board
-        self.loadedItems[6].position.set(785, 70, 450)
-        self.loadedItems[6].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
+        self.loadedItems[6].position.set(-725, 70, 485)
+        self.loadedItems[6].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.14159)
         self.loadedItems[6].children[0].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[6].children[0].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[6].children[0].children[0].children[2].material.side = THREE.FrontSide
-        self.timelineObj[5].obj = self.loadedItems[8]
+        self.timelineObj[5].obj = self.loadedItems[6]
         //1996 board
-        self.loadedItems[7].position.set(45, 70, 450)
-        self.loadedItems[7].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
+        self.loadedItems[7].position.set(45, 70, 485)
+        self.loadedItems[7].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.14159)
         self.loadedItems[7].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[7].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[7].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[6].obj = self.loadedItems[7]
         //1993 board
-        self.loadedItems[8].position.set(-735, 70, 450)
-        // self.loadedItems[8].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3)
+        self.loadedItems[8].position.set(780, 70, 485)
         self.loadedItems[8].scale.set(1, 1, -1)
         self.loadedItems[8].children[0].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[8].children[0].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[8].children[0].children[0].children[2].material.side = THREE.FrontSide
-        self.timelineObj[7].obj = self.loadedItems[6]
+        self.timelineObj[7].obj = self.loadedItems[8]
         //2002 board
-        self.loadedItems[9].position.set(510, 70, 800)
-        self.loadedItems[9].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
+        self.loadedItems[9].position.set(1170, 70, 1000)
+        self.loadedItems[9].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.14159)
         self.loadedItems[9].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[9].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[9].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[8].obj = self.loadedItems[9]
         //2013 board
-        self.loadedItems[10].position.set(110, 70, 800)
-        self.loadedItems[10].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
+        self.loadedItems[10].position.set(420, 70, 1000)
+        self.loadedItems[10].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.14159)
         self.loadedItems[10].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[10].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[10].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[9].obj = self.loadedItems[10]
         //2020 board
-        self.loadedItems[11].position.set(-390, 70, 800)
-        self.loadedItems[11].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
+        self.loadedItems[11].position.set(-330, 70, 1000)
+        self.loadedItems[11].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.14159)
         self.loadedItems[11].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[11].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[11].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[10].obj = self.loadedItems[11]
         //2021 board
-        self.loadedItems[12].position.set(-890, 70, 800)
-        self.loadedItems[12].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.2)
+        self.loadedItems[12].position.set(-1065, 70, 1000)
+        self.loadedItems[12].rotateOnAxis(new THREE.Vector3(0, 1, 0), 3.14159)
         self.loadedItems[12].children[0].children[0].material.side = THREE.FrontSide
         self.loadedItems[12].children[0].children[1].material.side = THREE.FrontSide
         self.loadedItems[12].children[0].children[2].material.side = THREE.FrontSide
         self.timelineObj[11].obj = self.loadedItems[12]
 
         //placeholder1
-        self.loadedItems[13].position.set(-500, 175, 1050)
+        self.loadedItems[13].position.set(-493, 150, 1150)
         self.loadedItems[13].rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.04)
-        self.loadedItems[13].scale.set(-1, 1, 1)
-        console.log(self.loadedItems[13])
+        self.loadedItems[13].scale.set(-0, 0, 0)
         this.placeholder1 = self.loadedItems[13]
-        this.placeholder1.visible = false
         //placeholder2
-        self.loadedItems[14].position.set(100, 175, 1500)
-        self.loadedItems[14].scale.set(-1, 1, 1)
-        self.loadedItems[14].rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.04)
+        self.loadedItems[14].position.set(100, 250, 2000)
+        self.loadedItems[14].scale.set(-0, 0, 0)
+        self.loadedItems[14].rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.02)
+        self.loadedItems[14].rotateOnAxis(new THREE.Vector3(0, 0, 1), 0.02)
         this.placeholder2 = self.loadedItems[14]
-        this.placeholder2.visible = false
 
         //event for mouse wheel
         window.addEventListener("wheel", (evt) => {
@@ -388,7 +372,6 @@ export default class threeScene {
             // calculate objects intersecting the picking ray
             const intersects = this.raycaster.intersectObjects(this.scene.children);
             if (intersects[0].object.name == "explore") {
-
                 window.dispatchEvent(new CustomEvent("openExplore", { detail: this.index }))
                 console.log("Index", this.index)
             }
@@ -398,11 +381,6 @@ export default class threeScene {
         window.addEventListener("moveCameraTimeline", (evt) => {
             this.goTo(self.timelineObj[evt.detail])
         })
-        /*
-        //@index is 
-        this.goTo(self.timelineObj[index])
-        
-        */
 
         this.camera.position.set(-1302, 492, -983)
         this.camera.rotation.set(3.096496824068951, -0.635938533090549, 3.1398363604390074)
@@ -413,10 +391,6 @@ export default class threeScene {
 
         //events for camera zoom in on mobile
         this.setCameraPinch()
-        // this.cameraMovementEvents()
-
-        //start animation function
-        // this.startAnim()
 
 
         this.circle = this.addRing()
@@ -447,6 +421,37 @@ export default class threeScene {
             }
         })
 
+        window.addEventListener("beforeunload", () => {
+            this.dispose()
+        })
+
+        this.circleInterval = setInterval(() => {
+            if (this.circle) {
+                this.raycaster.setFromCamera(this.mouse, this.camera);
+                const intersects = this.raycaster.intersectObjects(this.scene.children);
+                if (intersects[0].object.name == "explore") {
+                    this.text.material.color = new THREE.Color(0x808080);
+                    gsap.to([this.circle.children[2].material], { opacity: 1, duration: 1 })
+                    gsap.to([this.circle.children[3].material], { opacity: 0.3, duration: 1 })
+                    gsap.to(this.circle.children[3].scale, {
+                        x: 1.15,
+                        y: 1.15,
+                        z: 1.15,
+                        duration: 1
+                    })
+                }
+                else {
+                    gsap.to([this.circle.children[2].material, this.circle.children[3].material], { opacity: 0, duration: 1 })
+                    gsap.to(this.circle.children[3].scale, {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 1
+                    })
+                    this.text.material.color = new THREE.Color(0xffffff);
+                }
+            }
+        }, 100)
 
     }
     //move camera backwards on the timeline
@@ -467,20 +472,6 @@ export default class threeScene {
     startAnim() {
         this.moveCamera(0, false)
     }
-    //adds a spotlight at the specific coords and looks at the target
-    addLight(x, y, z, target) {
-        const spotLight = new THREE.SpotLight(0xffffff, this.spotlightIntensity);
-        spotLight.position.set(x, y, z);
-        spotLight.target = target;
-        spotLight.penumbra = 0.5
-        spotLight.angle = 0.25
-        spotLight.castShadow = true;
-        spotLight.shadow.bias = -0.0001;
-        spotLight.shadow.mapSize.width = 1024 * 4;
-        spotLight.shadow.mapSize.height = 1024 * 4;
-
-        this.scene.add(spotLight);
-    }
     moveCamera(index, oldIndex) {
         this.scroll = false
         const self = this
@@ -496,20 +487,16 @@ export default class threeScene {
             onComplete: () => {
                 self.startSpinBoard(index)
                 this.scroll = true
-                if (index <= 11) {
-                    this.circle.position.set(self.timelineObj[index].position.x + 10, self.timelineObj[index].position.y / 2, self.timelineObj[index].position.z - 150)
+                if (index == 0) {
+                    this.circle.position.set(self.timelineObj[index].position.x + 7, (self.timelineObj[index].position.y / 2) - 0.5, self.timelineObj[index].position.z - 150)
                     this.circle.visible = true
-                    this.placeholder2.visible = false
-                    this.placeholder1.visible = false
-
                 }
-                else if (index == 12) {
-                    this.placeholder1.visible = true
-                    this.placeholder2.visible = false
+                else if (index <= 12) {
+                    this.circle.position.set(self.timelineObj[index].position.x + 7, self.timelineObj[index].position.y / 1.55, self.timelineObj[index].position.z - 150)
+                    this.circle.visible = true
                 }
-                else if (index == 13) {
-                    this.placeholder2.visible = true
-                    this.placeholder1.visible = false
+                else {
+                    this.circle.visible = false
                 }
             }
         })
@@ -519,6 +506,7 @@ export default class threeScene {
             z: self.timelineObj[index].rotation.z,
             duration: 2,
         })
+        
         this.currentCameraCoords.x = self.timelineObj[index].position.x
         this.currentCameraCoords.y = self.timelineObj[index].position.y
         this.currentCameraCoords.z = self.timelineObj[index].position.z
@@ -537,6 +525,43 @@ export default class threeScene {
         }
         if (index > 12) {
             gsap.to(this.bg.position, { z: 4500, duration: 2 })
+        }
+
+        if (index <= 11) {
+            gsap.to(this.placeholder1.scale, {
+                x: 0,
+                y: 0,
+                z: 0,
+                duration: 1,
+            })
+        }
+        else if (index == 12) {
+            gsap.to(this.placeholder2.scale, {
+                x: 0,
+                y: 0,
+                z: 0,
+                duration: 0.25,
+            })
+            gsap.to(this.placeholder1.scale, {
+                x: -1,
+                y: 1,
+                z: 1,
+                duration: 1,
+            })
+        }
+        else if (index == 13) {
+            gsap.to(this.placeholder1.scale, {
+                x: 0,
+                y: 0,
+                z: 0,
+                duration: 0.25,
+            })
+            gsap.to(this.placeholder2.scale, {
+                x: -0.4,
+                y: 0.4,
+                z: 0.4,
+                duration: 1,
+            })
         }
     }
     startSpinBoard(index) {
@@ -594,6 +619,9 @@ export default class threeScene {
         //kill all tweens
         gsap.globalTimeline.clear()
 
+        //remove interval
+        clearInterval(this.circleInterval);
+
         this.scene = null
         this.camera = null
         this.renderer && this.renderer.renderLists.dispose()
@@ -603,33 +631,7 @@ export default class threeScene {
     }
     animate() {
         const animate = () => {
-            // this.stats.begin();
-            if (this.circle) {
-                this.raycaster.setFromCamera(this.mouse, this.camera);
-                const intersects = this.raycaster.intersectObjects(this.scene.children);
-                if (intersects[0].object.name == "explore") {
-                    gsap.to([this.circle.children[2].material], { opacity: 1, duration: 1 })
-                    gsap.to([this.circle.children[3].material], { opacity: 0.3, duration: 1 })
-                    gsap.to(this.circle.children[3].scale, {
-                        x: 1.15,
-                        y: 1.15,
-                        z: 1.15,
-                        duration: 2
-                    })
-                }
-                else {
-                    gsap.to([this.circle.children[2].material, this.circle.children[3].material], { opacity: 0, duration: 1 })
-                    gsap.to(this.circle.children[3].scale, {
-                        x: 1,
-                        y: 1,
-                        z: 1,
-                        duration: 2
-                    })
-                }
-            }
-
             this.renderer.render(this.scene, this.camera);
-            // this.stats.end();
             this.animFrame = requestAnimationFrame(animate);
         }
         animate()
@@ -684,55 +686,39 @@ export default class threeScene {
             pointerDown = false
         })
     }
-    rotateVertical() {
-        const v1 = new THREE.Vector3(0, 1, 0)
-        const v2 = new THREE.Vector3()
-        this.camera.getWorldDirection(v2)
-
-        const v3 = new THREE.Vector3((v1.y * v2.z) - (v1.z * v2.y), (v1.z * v2.x) - (v1.x * v2.z), (v1.x * v2.y) - (v1.y * v2.x))
-        console.log(this.initAngle)
-        this.initAngle += this.camera.sideRotationScalar
-        if (this.checkCameraRotationMouse(this.initAngle) === false) {
-            this.camera.rotateOnWorldAxis(v3, this.camera.sideRotationScalar)
-        } else {
-            this.initAngle -= this.camera.sideRotationScalar
-        }
-        // this.camera.rotation.z = 0
-    }
-    rotate() {
-        this.camera.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), (-this.camera.forwardRotationScalar / 300))
-        // this.camera.rotation.z = 0
-    }
-    checkCameraRotationMouse(y) {
-        if (y < 0.8 && y > -0.8) {
-            return false
-        }
-        return true
-    }
     //add button
     addRing() {
         const circleGroup = new THREE.Group()
 
-        const ring1Geom = new THREE.RingGeometry(9.9, 10, 80);
+        let radius1 = window.innerWidth / 192
+        if(radius1 < 5){
+            radius1 = 5
+        }
+        let radius2 = window.innerWidth / 160
+        if(radius2 < 6){
+            radius2 = 6
+        }
+
+        const ring1Geom = new THREE.RingGeometry(radius1 - 0.1, radius1, 80);
         const ring1Mat = new THREE.MeshBasicMaterial({ color: 0xe0e0e0, side: THREE.DoubleSide, transparent: true });
         const mesh1 = new THREE.Mesh(ring1Geom, ring1Mat);
         mesh1.position.set(0, 20, 100)
         circleGroup.add(mesh1);
 
-        const ring2Geom = new THREE.RingGeometry(11.9, 12, 80);
+        const ring2Geom = new THREE.RingGeometry(radius2 - 0.1, radius2, 80);
         const ring2Mat = new THREE.MeshBasicMaterial({ color: 0xe0e0e0, side: THREE.DoubleSide, transparent: true });
         const mesh2 = new THREE.Mesh(ring2Geom, ring2Mat);
         mesh2.position.set(0, 20, 100)
         circleGroup.add(mesh2);
 
-        const circleGeometry = new THREE.CircleGeometry(10, 32);
+        const circleGeometry = new THREE.CircleGeometry(radius1, 32);
         const circleMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0, side: THREE.DoubleSide });
         const circle = new THREE.Mesh(circleGeometry, circleMat);
         circle.position.set(0, 20, 100.1)
         circle.name = "explore"
         circleGroup.add(circle);
 
-        const circleGeometry2 = new THREE.CircleGeometry(12, 32);
+        const circleGeometry2 = new THREE.CircleGeometry(radius2, 32);
         const circleMat2 = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0, side: THREE.DoubleSide });
         const circle2 = new THREE.Mesh(circleGeometry2, circleMat2);
         circle2.position.set(0, 20, 100.2)
@@ -742,6 +728,7 @@ export default class threeScene {
         text.position.set(0, 20, 100)
         text.scale.set(-1, 1, -1)
         circleGroup.add(text)
+        this.text = text
         text.name = "explore"
 
         return circleGroup
@@ -824,59 +811,77 @@ export default class threeScene {
             }
         })
         if (target.id > this.currentTimelinePos) {
-            for (let i = this.currentTimelinePos; i <= target.id; i++) {
+            for (let i = this.currentTimelinePos + 1; i <= target.id; i++) {
                 this.movementTimeline.to(this.camera.position, {
                     x: self.timelineObj[i].position.x,
                     y: self.timelineObj[i].position.y,
                     z: self.timelineObj[i].position.z,
                     duration: 1,
-                }, i.toString())
-                if (i == 1) {
-                    this.movementTimeline.to(this.bg.position, { z: 3550, duration: 1 }, i.toString())
+                })
+                if (i == 0) {
+                    this.movementTimeline.add(() => {
+                        gsap.to(this.bg.position, { z: 3550, duration: 1 })
+                    })
                 }
-                if (i == 5) {
-                    this.movementTimeline.to(this.bg.position, { z: 3185, duration: 1 }, i.toString())
+                if (i == 4) {
+                    this.movementTimeline.add(() => {
+                        gsap.to(this.bg.position, { z: 3185, duration: 1 })
+                    })
                 }
-                if (i == 8) {
-                    this.movementTimeline.to(this.bg.position, { z: 3600, duration: 1 }, i.toString())
+                if (i == 7) {
+                    this.movementTimeline.add(() => {
+                        gsap.to(this.bg.position, { z: 3600, duration: 1 })
+                    })
+                }
+                if (i == 11) {
+                    this.movementTimeline.add(() => {
+                        gsap.to(this.bg.position, { z: 4052, duration: 1 })
+                    })
                 }
                 if (i == 12) {
-                    this.movementTimeline.to(this.bg.position, { z: 4052, duration: 1 }, i.toString())
-                }
-                if (i == 13) {
-                    this.movementTimeline.to(this.bg.position, { z: 4500, duration: 1 }, i.toString())
+                    this.movementTimeline.add(() => {
+                        gsap.to(this.bg.position, { z: 4500, duration: 1 })
+                    })
                 }
             }
-            this.movementTimeline.play()
-            this.currentTimelinePos = target.id
         }
         else {
-            for (let i = this.currentTimelinePos; i >= target.id; i--) {
+            for (let i = this.currentTimelinePos - 1; i >= target.id; i--) {
                 this.movementTimeline.to(this.camera.position, {
                     x: self.timelineObj[i].position.x,
                     y: self.timelineObj[i].position.y,
                     z: self.timelineObj[i].position.z,
                     duration: 1,
-                }, i.toString())
-                if (i == 1) {
-                    this.movementTimeline.to(this.bg.position, { z: 3550, duration: 1 }, i.toString())
+                })
+                if (i == 0) {
+                    this.movementTimeline.add(() => {
+                        gsap.to(this.bg.position, { z: 3550, duration: 1 })
+                    })
                 }
-                if (i == 5) {
-                    this.movementTimeline.to(this.bg.position, { z: 3185, duration: 1 }, i.toString())
+                if (i == 4) {
+                    this.movementTimeline.add(() => {
+                        gsap.to(this.bg.position, { z: 3185, duration: 1 })
+                    })
                 }
-                if (i == 8) {
-                    this.movementTimeline.to(this.bg.position, { z: 3600, duration: 1 }, i.toString())
+                if (i == 7) {
+                    this.movementTimeline.add(() => {
+                        gsap.to(this.bg.position, { z: 3600, duration: 1 })
+                    })
+                }
+                if (i == 11) {
+                    this.movementTimeline.add(() => {
+                        gsap.to(this.bg.position, { z: 4052, duration: 1 })
+                    })
                 }
                 if (i == 12) {
-                    this.movementTimeline.to(this.bg.position, { z: 4052, duration: 1 }, i.toString())
-                }
-                if (i == 13) {
-                    this.movementTimeline.to(this.bg.position, { z: 4500, duration: 1 }, i.toString())
+                    this.movementTimeline.add(() => {
+                        gsap.to(this.bg.position, { z: 4500, duration: 1 })
+                    })
                 }
             }
-            this.movementTimeline.play()
-            this.currentTimelinePos = target.id
         }
+        this.movementTimeline.play()
+        this.currentTimelinePos = target.id
     }
     roundUp(numToRound, multiple) {
         let value = multiple;
@@ -899,5 +904,8 @@ export default class threeScene {
         this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
+    }
+    showExploreBtn(visible) {
+        this.circle.visible = visible
     }
 }
