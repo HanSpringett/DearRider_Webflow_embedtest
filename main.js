@@ -209,7 +209,7 @@ export default class threeScene {
         }
         const textureLoader = new THREE.TextureLoader()
         const geometry = new THREE.PlaneGeometry(15000, 8000);
-        const material = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, map: textureLoader.load("https://raw.githubusercontent.com/HanSpringett/DearRider/main/assets/cube/mountains-covered-with-snow-2-Ab.jpg") });
+        const material = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, map: textureLoader.load("https://web03171.microsites03.redbull.com/assets/mountains-covered-with-snow-2-Ab.jpg") });
         const plane = new THREE.Mesh(geometry, material);
         plane.position.set(1000, -1000, 3000)
         plane.scale.set(1.25, 1.25, 1.25)
