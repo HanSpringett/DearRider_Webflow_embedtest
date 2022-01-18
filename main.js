@@ -49,7 +49,7 @@ export default class threeScene {
         this.index = 0
         this.spinAnim
         this.rotateCoords = { x: 0, y: 0, z: 0 }
-        this.sceneAssets = [
+       this.sceneAssets = [
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/release5.0/assets/building_shadows_v11.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/release5.0/assets/Cubes_v2.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1977.gltf',
@@ -444,8 +444,9 @@ export default class threeScene {
         }
     }
     //initial animation that moves the camera from the corner to the cubes
-    startAnim() {
+    startAnim(showUI) {
         this.moveCamera(0, false)
+        t.showUI(showUI)
     }
     moveCamera(index, oldIndex) {
         this.movementTimeline.kill()
