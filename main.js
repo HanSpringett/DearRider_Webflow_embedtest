@@ -52,17 +52,17 @@ export default class threeScene {
         this.sceneAssets = [
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/release5.0/assets/building_shadows_v11.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/release5.0/assets/Cubes_v2.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1977.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1983.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1986.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1989.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1993.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1996_Custom.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1996_Dolphin.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2002.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2013.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2020.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2021.gltf',
+            './assets/DearRider_1977.gltf',
+            './assets/DearRider_1983.gltf',
+            './assets/DearRider_1986.gltf',
+            './assets/DearRider_1989.gltf',
+            './assets/DearRider_1993.gltf',
+            './assets/DearRider_1996_Custom.gltf',
+            './assets/DearRider_1996_Dolphin.gltf',
+            './assets/DearRider_2002.gltf',
+            './assets/DearRider_2013.gltf',
+            './assets/DearRider_2020.gltf',
+            './assets/DearRider_2021.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRiderOutro1.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRiderOutro2.gltf'
         ];
@@ -353,7 +353,7 @@ export default class threeScene {
             }
         })
         //move the camera at the event.detail where event.detail is the index of the timelineObj
-        window.addEventListener("click", (evt) => {
+        window.addEventListener("moveCameraTimeline", (evt) => {
             this.goTo(self.timelineObj[evt.detail])
         })
 
@@ -892,4 +892,3 @@ export default class threeScene {
         }
     }
 }
-
