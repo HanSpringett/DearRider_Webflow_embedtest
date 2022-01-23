@@ -10,15 +10,15 @@ export default class threeScene {
             75,
             this.width / this.height,
             1,
-            10000
+            9000
         );
 
-        this.renderer = new THREE.WebGLRenderer({ antialias: true });
+        this.renderer = new THREE.WebGLRenderer({antialias: true})
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        if(window.devicePixelRatio > 2){
+        if (window.devicePixelRatio > 2) {
             this.renderer.setPixelRatio(2);
         }
-        else{
+        else {
             this.renderer.setPixelRatio(window.devicePixelRatio);
         }
         this.renderer.outputEncoding = THREE.sRGBEncoding;
@@ -27,10 +27,6 @@ export default class threeScene {
 
         this.camera.forwardRotationScalar = 0
         this.camera.sideRotationScalar = 0
-
-        this.stats = new Stats();
-        this.stats.showPanel(1); // 0: fps, 1: ms, 2: mb, 3+: custom
-        document.body.appendChild(this.stats.dom);
 
         this.camera.position.set(0, 20, 100);
         //resize
@@ -74,7 +70,6 @@ export default class threeScene {
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/WatchDocumentary_background.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_icon.gltf'
         ];
-
         this.loadedItems = {};
         this.mouse = new THREE.Vector2();
 
@@ -707,10 +702,8 @@ export default class threeScene {
     }
     animate() {
         const animate = () => {
-            this.stats.begin();
             this.moveText()
             this.renderer.render(this.scene, this.camera);
-            this.stats.end();
             this.animFrame = requestAnimationFrame(animate);
         }
         animate()
