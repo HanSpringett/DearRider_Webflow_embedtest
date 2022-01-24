@@ -1,3 +1,5 @@
+
+   
 export default class threeScene {
     constructor() {
     }
@@ -13,7 +15,7 @@ export default class threeScene {
             9000
         );
 
-        this.renderer = new THREE.WebGLRenderer({antialias: true})
+        this.renderer = new THREE.WebGLRenderer({ antialias: true })
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         if (window.devicePixelRatio > 2) {
             this.renderer.setPixelRatio(2);
@@ -27,6 +29,7 @@ export default class threeScene {
 
         this.camera.forwardRotationScalar = 0
         this.camera.sideRotationScalar = 0
+
 
         this.camera.position.set(0, 20, 100);
         //resize
@@ -70,6 +73,7 @@ export default class threeScene {
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/WatchDocumentary_background.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_icon.gltf'
         ];
+
         this.loadedItems = {};
         this.mouse = new THREE.Vector2();
 
@@ -313,6 +317,7 @@ export default class threeScene {
             this.uiScale = 0.01
         }
         this.textButton = self.loadedItems[15]
+        this.textButton.name = 'textBG'
         this.textButton.scale.set(this.uiScale, this.uiScale, -this.uiScale)
         this.textBG = self.loadedItems[16]
         this.textBG.name = 'textBG'
@@ -322,6 +327,7 @@ export default class threeScene {
         this.logoText = self.loadedItems[17]
         this.logoText.children[0].material.transparent = true
         this.logoText.scale.set(this.uiScale, this.uiScale, this.uiScale)
+
 
         //event for mouse wheel
         window.addEventListener("wheel", (evt) => {
@@ -367,6 +373,10 @@ export default class threeScene {
                 console.log("Index", this.index)
             }
             if (intersects[0].object.parent && intersects[0].object.parent.parent && intersects[0].object.parent.parent.name == "textBG") {
+                window.dispatchEvent(new CustomEvent("watchDocumentary", { detail: this.index }))
+                console.log("watchDocumentary", this.index)
+            }
+            else if (intersects[0].object.parent && intersects[0].object.parent.name == "Watch" || intersects[0].object.parent && intersects[0].object.parent.name == "the" || intersects[0].object.parent && intersects[0].object.parent.name == "Documentary") {
                 window.dispatchEvent(new CustomEvent("watchDocumentary", { detail: this.index }))
                 console.log("watchDocumentary", this.index)
             }
@@ -452,6 +462,9 @@ export default class threeScene {
                 if (intersects[0].object.parent && intersects[0].object.parent.parent && intersects[0].object.parent.parent.name == "textBG") {
                     gsap.to(this.textBG.children[0].children[0].material, { opacity: 0.65, duration: 1 })
                 }
+                else if (intersects[0].object.parent && intersects[0].object.parent.name == "Watch" || intersects[0].object.parent && intersects[0].object.parent.name == "the" || intersects[0].object.parent && intersects[0].object.parent.name == "Documentary") {
+                    gsap.to(this.textBG.children[0].children[0].material, { opacity: 0.65, duration: 1 })
+                }
                 else {
                     gsap.to(this.textBG.children[0].children[0].material, { opacity: 0, duration: 1 })
                 }
@@ -460,7 +473,6 @@ export default class threeScene {
         this.showWatchButtons(false)
         this.animate()
         gsap.delayedCall(3, () => {
-            console.log("Number of Triangles :", this.renderer.info.render.triangles);
             this.startAnim(true)
         })
 
@@ -510,18 +522,18 @@ export default class threeScene {
                 this.scroll = true
                 if (index == 0) {
                     this.showWatchButtons(true)
-                    this.circle.position.set(self.timelineObj[index].position.x + 7, (self.timelineObj[index].position.y / 2) - 0.5, self.timelineObj[index].position.z - 150)
+                    this.circle.position.set(self.timelineObj[index].position.x + 7, (self.timelineObj[index].position.y / 2) - 0.5, self.timelineObj[index].position.z - 160)
                     this.circle.visible = true
                     this.showCirclesCircle(true)
                 }
                 else if (index <= 11) {
                     this.showWatchButtons(true)
-                    this.circle.position.set(self.timelineObj[index].position.x + 7, self.timelineObj[index].position.y / 1.55, self.timelineObj[index].position.z - 150)
+                    this.circle.position.set(self.timelineObj[index].position.x + 7, self.timelineObj[index].position.y / 1.55, self.timelineObj[index].position.z - 160)
                     this.circle.visible = true
                     this.showCirclesCircle(true)
                 }
                 else if (index == 12) {
-                    this.circle.position.set(self.timelineObj[index].position.x + 7, (self.timelineObj[index].position.y / 1.55) - 40, self.timelineObj[index].position.z - 150)
+                    this.circle.position.set(self.timelineObj[index].position.x + 7, (self.timelineObj[index].position.y / 1.55) - 40, self.timelineObj[index].position.z - 160)
                     this.circle.visible = true
                     this.showCirclesCircle(false)
                 }
@@ -888,12 +900,12 @@ export default class threeScene {
                 this.startSpinBoard(target.id)
                 this.scroll = true
                 if (target.id == 0) {
-                    this.circle.position.set(self.timelineObj[target.id].position.x + 7, (self.timelineObj[target.id].position.y / 2) - 0.5, self.timelineObj[target.id].position.z - 150)
+                    this.circle.position.set(self.timelineObj[target.id].position.x + 7, (self.timelineObj[target.id].position.y / 2) - 0.5, self.timelineObj[target.id].position.z - 160)
                     this.circle.visible = true
                     this.showCirclesCircle(true)
                 }
                 else if (target.id <= 12) {
-                    this.circle.position.set(self.timelineObj[target.id].position.x + 7, self.timelineObj[target.id].position.y / 1.55, self.timelineObj[target.id].position.z - 150)
+                    this.circle.position.set(self.timelineObj[target.id].position.x + 7, self.timelineObj[target.id].position.y / 1.55, self.timelineObj[target.id].position.z - 160)
                     this.circle.visible = true
                     this.showCirclesCircle(true)
                 }
@@ -928,7 +940,7 @@ export default class threeScene {
                         z: -0.35,
                         duration: 1,
                     })
-                    this.circle.position.set(self.timelineObj[target.id].position.x + 7, (self.timelineObj[target.id].position.y / 1.55) - 40, self.timelineObj[target.id].position.z - 150)
+                    this.circle.position.set(self.timelineObj[target.id].position.x + 7, (self.timelineObj[target.id].position.y / 1.55) - 40, self.timelineObj[target.id].position.z - 160)
                     this.showCirclesCircle(false)
                     this.enlargeTween(this.textBG, { x: this.uiScale, y: this.uiScale, z: -this.uiScale })
                     this.enlargeTween(this.textButton, { x: this.uiScale, y: this.uiScale, z: -this.uiScale })
@@ -1049,8 +1061,5 @@ export default class threeScene {
         this.logoText.visible = visible
         this.textBG.visible = visible
         this.textButton.visible = visible
-    }
-    needToRender(value = 2) {
-        this.renderTime = value;
     }
 }
