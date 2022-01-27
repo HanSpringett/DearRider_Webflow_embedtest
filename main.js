@@ -59,7 +59,7 @@ export default class threeScene {
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1977.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1983.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1986.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1989.gltf',
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1989_v3.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1993.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1996_Custom.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1996_Dolphin.gltf',
@@ -69,12 +69,9 @@ export default class threeScene {
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_2021.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Outro1.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/Outro2.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/WatchDocumentary_text.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/WatchDocumentary_background.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_icon.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/WatchDocumentary_text_v2.gltf',
             'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/WatchDocumentary_background_v2.gltf',
-            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_1989_v3.gltf'
+            'https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/DearRider_icon.gltf'
         ];
 
         this.loadedItems = {};
