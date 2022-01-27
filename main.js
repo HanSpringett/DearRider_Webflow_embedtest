@@ -1,9 +1,10 @@
-
-   
+import * as THREE from 'https://cdn.skypack.dev/pin/three@v0.137.0-X5O2PK3x44y1WRry67Kr/mode=imports,min/optimized/three.js';
+import { GLTFLoader } from './GLTFLoader.js'
+import { RGBELoader } from './RGBELoader.js';
 export default class threeScene {
     constructor() {
     }
-    init(container, GLTFLoader, RGBELoader) {
+    init(container) {
         this.scene = new THREE.Scene();
         this.container = container
         this.width = window.innerWidth;
@@ -29,7 +30,6 @@ export default class threeScene {
 
         this.camera.forwardRotationScalar = 0
         this.camera.sideRotationScalar = 0
-
 
         this.camera.position.set(0, 20, 100);
         //resize
@@ -231,7 +231,7 @@ export default class threeScene {
         const pmremGenerator = new THREE.PMREMGenerator(this.renderer);
         pmremGenerator.compileEquirectangularShader();
         //Loading of assets
-        new this.RGBELoader().setDataType(THREE.UnsignedByteType)
+        new this.RGBELoader()
             .load('https://raw.githubusercontent.com/HanSpringett/DearRider_Webflow_embedtest/main/assets/studio_small_09_1k.hdr', (texture) => {
 
                 const envMap = pmremGenerator.fromEquirectangular(texture).texture;
@@ -311,7 +311,7 @@ export default class threeScene {
 
         this.uiScale = window.innerWidth / 958
         if (this.uiScale < 1) {
-            this.uiScale = 0.0075
+            this.uiScale = 0.0065
         }
         else {
             this.uiScale = 0.01
@@ -320,14 +320,13 @@ export default class threeScene {
         this.textButton.name = 'textBG'
         this.textButton.scale.set(this.uiScale, this.uiScale, -this.uiScale)
         this.textBG = self.loadedItems[16]
-        this.textBG.name = 'textBG'
-        this.textBG.children[0].children[0].material.transparent = true
+        this.textBG.children[0].name = 'textBG'
+        this.textBG.children[0].material.transparent = true
         this.textBG.scale.set(this.uiScale, this.uiScale, this.uiScale)
-        this.textBG.children[0].children[0].opacity = 0
+        this.textBG.children[0].opacity = 0
         this.logoText = self.loadedItems[17]
         this.logoText.children[0].material.transparent = true
         this.logoText.scale.set(this.uiScale, this.uiScale, this.uiScale)
-
 
         //event for mouse wheel
         window.addEventListener("wheel", (evt) => {
@@ -372,7 +371,7 @@ export default class threeScene {
                 window.dispatchEvent(new CustomEvent("openExplore", { detail: this.index }))
                 console.log("Index", this.index)
             }
-            if (intersects[0].object.parent && intersects[0].object.parent.parent && intersects[0].object.parent.parent.name == "textBG") {
+            if (intersects[0].object.parent && intersects[0].object.parent.parent && intersects[0].object.parent.parent.name == "textBG" || intersects[0].object.name == "textBG") {
                 window.dispatchEvent(new CustomEvent("watchDocumentary", { detail: this.index }))
                 console.log("watchDocumentary", this.index)
             }
@@ -459,20 +458,18 @@ export default class threeScene {
             if (this.textBG) {
                 this.raycaster.setFromCamera(this.mouse, this.camera);
                 const intersects = this.raycaster.intersectObjects(this.scene.children);
-                if (intersects[0].object.parent && intersects[0].object.parent.parent && intersects[0].object.parent.parent.name == "textBG") {
-                    gsap.to(this.textBG.children[0].children[0].material, { opacity: 0.65, duration: 1 })
-                }
-                else if (intersects[0].object.parent && intersects[0].object.parent.name == "Watch" || intersects[0].object.parent && intersects[0].object.parent.name == "the" || intersects[0].object.parent && intersects[0].object.parent.name == "Documentary") {
-                    gsap.to(this.textBG.children[0].children[0].material, { opacity: 0.65, duration: 1 })
+                if (intersects[0].object.parent && intersects[0].object.parent.parent && intersects[0].object.parent.parent.name == "textBG" || intersects[0].object.name == "textBG" ) {
+                    gsap.to(this.textBG.children[0].material, { opacity: 0.65, duration: 1 })
                 }
                 else {
-                    gsap.to(this.textBG.children[0].children[0].material, { opacity: 0, duration: 1 })
+                    gsap.to(this.textBG.children[0].material, { opacity: 0, duration: 1 })
                 }
             }
         }, 100)
         this.showWatchButtons(false)
         this.animate()
         gsap.delayedCall(3, () => {
+            console.log("Number of Triangles :", this.renderer.info.render.triangles);
             this.startAnim(true)
         })
 
@@ -660,31 +657,31 @@ export default class threeScene {
                 }
             }
         }
-
-        for (let i = 0; i < this.textButton.children[0].children[0].children[0].children[0].children.length; i++) {
-            this.textButton.children[0].children[0].children[0].children[0].children[i].geometry.dispose()
-            cleanMaterial(this.textButton.children[0].children[0].children[0].children[0].children[i].material)
-        }
-        for (let i = 0; i < this.textButton.children[0].children[0].children[0].children[0].children.length; i++) {
-            this.textButton.children[0].children[0].children[0].children[0].children[i].geometry.dispose()
-            cleanMaterial(this.textButton.children[0].children[0].children[0].children[0].children[i].material)
-        }
-        for (let i = 0; i < this.textButton.children[0].children[0].children[0].children[0].children.length; i++) {
-            this.textButton.children[0].children[0].children[0].children[0].children[i].geometry.dispose()
-            cleanMaterial(this.textButton.children[0].children[0].children[0].children[0].children[i].material)
-        }
-        this.textButton.children[0].children[1].geometry.dispose()
-        cleanMaterial(this.textButton.children[0].children[1].material)
-        this.textButton.children[0].children[1].geometry.dispose()
-        cleanMaterial(this.textButton.children[0].children[1].material)
-        this.textBG.children[0].children[0].geometry.dispose()
-        cleanMaterial(this.textBG.children[0].children[0].material)
-        this.logoText.children[0].geometry.dispose()
-        cleanMaterial(this.logoText.children[0].material)
-
         this.textButton = null
         this.logoText = null
         this.textBG = null
+
+        for (let i = 0; i < this.textButton.children[0].children[0].children[0].children[0].children.length; i++) {
+            this.textButton.children[0].children[0].children[0].children[0].children[i].geometry.dispose()
+            cleanMaterial(this.textButton.children[0].children[0].children[0].children[0].children[i].material)
+        }
+        for (let i = 0; i < this.textButton.children[0].children[0].children[0].children[0].children.length; i++) {
+            this.textButton.children[0].children[0].children[0].children[0].children[i].geometry.dispose()
+            cleanMaterial(this.textButton.children[0].children[0].children[0].children[0].children[i].material)
+        }
+        for (let i = 0; i < this.textButton.children[0].children[0].children[0].children[0].children.length; i++) {
+            this.textButton.children[0].children[0].children[0].children[0].children[i].geometry.dispose()
+            cleanMaterial(this.textButton.children[0].children[0].children[0].children[0].children[i].material)
+        }
+        this.textButton.children[0].children[1].geometry.dispose()
+        cleanMaterial(this.textButton.children[0].children[1].material)
+        this.textButton.children[0].children[1].geometry.dispose()
+        cleanMaterial(this.textButton.children[0].children[1].material)
+        this.textBG.children[0].geometry.dispose()
+        cleanMaterial(this.textBG.children[0].material)
+        this.logoText.children[0].geometry.dispose()
+        cleanMaterial(this.logoText.children[0].material)
+
 
         this.scene.traverse(object => {
             if (!object.isMesh) return
